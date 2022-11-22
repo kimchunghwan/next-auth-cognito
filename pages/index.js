@@ -1,6 +1,8 @@
 import {useSession, signIn, signOut} from "next-auth/client";
 import Link from "next/link";
 
+const userClick  = () => {}
+
 export default function Home() {
   const [session, loading] = useSession();
 
@@ -12,7 +14,7 @@ export default function Home() {
     return (
       <>
         Signed in as {session.user.email} <br/>
-        <button onClick={() => signOut()}>Sign Out</button>
+        <button onClick={() => signOut('cognito')}>Sign Out</button>
         <br/>
         <Link href="/setting">
           <a>設定ページへ</a>
@@ -24,7 +26,9 @@ export default function Home() {
   return (
     <>
       Not signed in <br/>
-      <button onClick={() => signIn()}>Sign in</button>
+      <button onClick={()=>userClick()}> user </button>
+      <button onClick={() => signIn('cognito', {callbackUrl: 'http://localhost:3000/user'})}>Sign in</button>
+      <Link href="post/1">post:1</Link>
     </>
   )
 }
