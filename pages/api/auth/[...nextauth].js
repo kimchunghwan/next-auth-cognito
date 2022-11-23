@@ -11,7 +11,8 @@ export default NextAuth({
         /**
          * Settings > Developer settings > oauth-github
          * homepage url: http://localhost:3000/
-         * Authorization callback URL >
+         * Authorization callback URL > http://localhost:3000/api/auth/callback/github
+         @see: https://www.youtube.com/watch?v=9bV_x2jxLFQ
          */
         Providers.GitHub({
             clientId: process.env.GITHUB_CLIENT_ID,
