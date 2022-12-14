@@ -29,6 +29,9 @@ export default function Home() {
       <button onClick={()=>userClick()}> user </button>
       <button onClick={() => signIn('cognito', {callbackUrl: 'http://localhost:3000/user'})}>Sign in</button>
       <Link href="post/1">post:1</Link>
+        <h1 className="text-3xl font-bold">
+            Hello world!
+        </h1>
     </>
   )
 }
