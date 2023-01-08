@@ -8,6 +8,6 @@ export function useRequireLogin() {
 
   useEffect(() => {
     if (loading) return; // まだ確認中
-    if (!session) router.push("/"); // 未ログインだったのでリダイレクト
+    if (!session) router.push("/cognito"); // 未ログインだったのでリダイレクト
   }, [loading, session])
 }

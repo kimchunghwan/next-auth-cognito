@@ -1,5 +1,6 @@
 import {signOut, useSession} from "next-auth/client";
 import {useRequireLogin} from "../../hooks/useRequireLogin";
+import {useRouter} from "next/router";
 
 export default function User() {
     const [session, loading] = useSession()
@@ -14,9 +15,9 @@ export default function User() {
         console.log('session', session)
         return (
             <>
-                <h2> {session.user.name} user page</h2>
+                   <h2> {session.user.name} user page</h2>
                 <button onClick={() => signOut({
-                    callbackUrl: `${window.location.origin}`
+                    callbackUrl: `${window.location.origin}/cognito`
                 })}>Sign Out
                 </button>
                 <br/>
