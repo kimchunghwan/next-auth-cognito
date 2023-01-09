@@ -1,5 +1,6 @@
 import React from "react";
 import { createPopper } from "@popperjs/core";
+import {signOut} from "next-auth/client";
 
 const UserDropdown = () => {
   // dropdown props
@@ -15,6 +16,14 @@ const UserDropdown = () => {
   const closeDropdownPopover = () => {
     setDropdownPopoverShow(false);
   };
+  
+  const items = [
+    {name:'Action', onClick: (e) => e.preventDefault()},
+    {name:'Another action', onClick: (e) => e.preventDefault()},
+    {name:'Something else here', onClick: (e) => e.preventDefault()},
+    {name:'sign out', onClick: () => signOut({callbackUrl: `${window.location.origin}/auth/login`})},
+  ]
+
   return (
     <>
       <a
@@ -43,33 +52,17 @@ const UserDropdown = () => {
           "bg-white text-base z-50 float-left py-2 list-none text-left rounded shadow-lg min-w-48"
         }
       >
-        <a
+        {items.map(item => {
+          return <a
           href="#pablo"
           className={
             "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
           }
-          onClick={(e) => e.preventDefault()}
+          onClick={item.onClick}
         >
-          Action
+          {item.name}
         </a>
-        <a
-          href="#pablo"
-          className={
-            "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
-          }
-          onClick={(e) => e.preventDefault()}
-        >
-          Another action
-        </a>
-        <a
-          href="#pablo"
-          className={
-            "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
-          }
-          onClick={(e) => e.preventDefault()}
-        >
-          Something else here
-        </a>
+        })}
         <div className="h-0 my-2 border border-solid border-blueGray-100" />
         <a
           href="#pablo"
