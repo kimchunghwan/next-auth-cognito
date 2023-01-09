@@ -8,6 +8,10 @@ export default NextAuth({
             clientSecret: process.env.COGNITO_CLIENT_SECRET,
             domain: process.env.COGNITO_DOMAIN,
         }),
+        Providers.Google({
+            clientId: process.env.GOOGLE_CLIENT_ID,
+            clientSecret: process.env.GOOGLE_CLIENT_SECRET
+        }),
         /**
          * Settings > Developer settings > oauth-github
          * homepage url: http://localhost:3000/
@@ -18,7 +22,7 @@ export default NextAuth({
             clientId: process.env.GITHUB_CLIENT_ID,
             clientSecret: process.env.GITHUB_CLIENT_SECRET,
         })
-        
+
     ],
     secret: process.env.JWT_SECRET
 })

@@ -15,7 +15,7 @@ export default function Home() {
         return (
             <>
                 Signed in as {session.user.email} <br/>
-                <button onClick={() => signOut()}>Sign Out</button>
+                <button onClick={() => signOut({callbackUrl: '/auth/login'})}>Sign Out</button>
                 <br/>
                 <Link href="/setting">
                     <a>設定ページへ</a>
@@ -28,7 +28,7 @@ export default function Home() {
         <>
             Not signed in <br/>
             <button onClick={() => userClick()}> user</button>
-            <button onClick={() => signIn('github', {callbackUrl: 'http://localhost:3000/user'})}>Sign in</button>
+            <button onClick={() => signIn('github', {callbackUrl: 'http://localhost:3000/admin/dashboard'})}>Sign in</button>
             <Link href="post/1">post:1</Link>
         </>
     )

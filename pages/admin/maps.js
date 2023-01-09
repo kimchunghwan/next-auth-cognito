@@ -7,7 +7,7 @@ import React from "react";
 
 // import MapExample from "../../components/Maps/MapExample";
 import Admin from "../../layouts/Admin";
-import MapTest from "../../components/Maps/MapTest";
+import MapExample from "../../components/Maps/MapExample";
 
 export default function Maps() {
   return (
@@ -15,7 +15,7 @@ export default function Maps() {
       <div className="flex flex-wrap">
         <div className="w-full px-4">
           <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
-            <MapTest isMarkerShown />
+            <MapExample></MapExample>
           </div>
         </div>
       </div>

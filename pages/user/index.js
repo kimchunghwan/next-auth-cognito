@@ -17,7 +17,7 @@ export default function User() {
             <>
                    <h2> {session.user.name} user page</h2>
                 <button onClick={() => signOut({
-                    callbackUrl: `${window.location.origin}/cognito`
+                    callbackUrl: `${window.location.origin}/auth/login`
                 })}>Sign Out
                 </button>
                 <br/>

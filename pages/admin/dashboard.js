@@ -5,8 +5,10 @@ import CardBarChart from "../../components/Cards/CardBarChart";
 import CardPageVisits from "../../components/Cards/CardPageVisits";
 import CardSocialTraffic from "../../components/Cards/CardSocialTraffic";
 import Admin from "../../layouts/Admin";
+import {useRequireLogin} from "../../hooks/useRequireLogin";
 
 export default function Dashboard() {
+  useRequireLogin()
   return (
     <>
       <div className="flex flex-wrap">

@@ -1,12 +1,21 @@
 import React from "react";
 import Link from "next/link";
-import {signIn} from "next-auth/client";
+import {signIn, useSession} from "next-auth/client";
 
 // layout for page
 
 import Auth from "../../layouts/Auth.js";
+import {useRouter} from "next/router";
 
 export default function Login() {
+  const [session,loading] = useSession()
+  const router = useRouter()
+  if(loading) {
+    return null
+  }
+  if(session) {
+    router.push('/admin/dashboard')
+  }
   return (
     <>
       <div className="container mx-auto px-4 h-full">
@@ -23,7 +32,7 @@ export default function Login() {
                   <button
                     className="bg-white active:bg-blueGray-50 text-blueGray-700 font-normal px-4 py-2 rounded outline-none focus:outline-none mr-2 mb-1 uppercase shadow hover:shadow-md inline-flex items-center font-bold text-xs ease-linear transition-all duration-150"
                     type="button"
-                    onClick={() => signIn('github', {callbackUrl: 'http://localhost:3000/user'})}
+                    onClick={() => signIn('github', {callbackUrl: 'http://localhost:3000/admin/dashboard'})}
                   >
                     <img alt="..." className="w-5 mr-1" src="/img/github.svg" />
                     Github
@@ -31,6 +40,7 @@ export default function Login() {
                   <button
                     className="bg-white active:bg-blueGray-50 text-blueGray-700 font-normal px-4 py-2 rounded outline-none focus:outline-none mr-1 mb-1 uppercase shadow hover:shadow-md inline-flex items-center font-bold text-xs ease-linear transition-all duration-150"
                     type="button"
+                    onClick={() => signIn('google', {callbackUrl: 'http://localhost:3000/admin/dashboard'})}
                   >
                     <img alt="..." className="w-5 mr-1" src="/img/google.svg" />
                     Google
